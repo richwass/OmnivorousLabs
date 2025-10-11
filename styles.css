@@ -18,6 +18,9 @@
   --space-lg: 56px;
   --space-xl: 96px;
 
+  /* Mobile-specific spacing overrides */
+  --mobile-padding: 24px;
+
   /* Typography */
   --font-body: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
   --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
@@ -157,6 +160,18 @@ p {
   line-height: 1.6;
   color: var(--muted);
   margin: 0 0 var(--space-sm);
+}
+
+ul, ol {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0 0 var(--space-sm);
+  padding-left: 24px;
+}
+
+ul li, ol li {
+  margin-bottom: 8px;
 }
 
 .tagline {
@@ -309,24 +324,160 @@ hr {
 /* ============================================
    RESPONSIVE
    ============================================ */
+
+/* Tablet and below (768px) */
 @media (max-width: 768px) {
+  /* Increase container padding for better whitespace */
+  .container {
+    padding: var(--space-md) var(--mobile-padding);
+  }
+
+  /* Navigation improvements */
+  .nav {
+    padding: 16px var(--mobile-padding);
+  }
+
   .nav-links {
     gap: 20px;
     font-size: 14px;
   }
 
+  /* Hero section spacing */
   .hero {
-    /* Tighter spacing on mobile for better content density */
     padding: var(--space-lg) 0 var(--space-md);
   }
 
+  /* Section vertical spacing */
   .section {
     padding: var(--space-md) 0;
+  }
+
+  /* Card grid - single column on tablet */
+  .cards {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  /* Footer adjustments */
+  .footer {
+    padding: 48px var(--mobile-padding) 72px;
   }
 
   .footer-content {
     flex-direction: column;
     gap: var(--space-sm);
     text-align: center;
+  }
+}
+
+/* Mobile phones (480px and below) */
+@media (max-width: 480px) {
+  /* Increase horizontal padding on small screens */
+  .container {
+    padding: 20px 20px;
+  }
+
+  .nav {
+    padding: 12px 20px;
+  }
+
+  /* Make nav links more touch-friendly */
+  .nav-links {
+    gap: 16px;
+    font-size: 13px;
+  }
+
+  .nav-links a {
+    padding: 8px 4px;
+    display: inline-block;
+  }
+
+  /* Typography adjustments for readability */
+  h1 {
+    font-size: clamp(28px, 8vw, 40px);
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: clamp(22px, 5vw, 26px);
+    line-height: 1.25;
+    margin: 20px 0 12px;
+  }
+
+  h3 {
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  ul, ol {
+    font-size: 16px;
+    line-height: 1.65;
+    padding-left: 20px;
+  }
+
+  .tagline {
+    font-size: 19px;
+    line-height: 1.4;
+  }
+
+  /* Hero adjustments */
+  .hero {
+    padding: var(--space-md) 0 var(--space-sm);
+  }
+
+  .hero .logo {
+    margin-bottom: var(--space-sm);
+  }
+
+  /* Section spacing - more vertical breathing room */
+  .section {
+    padding: 40px 0;
+  }
+
+  /* Card padding increase for mobile */
+  .card {
+    padding: 20px;
+  }
+
+  /* Approach tagline adjustment */
+  .approach-tagline {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 24px;
+  }
+
+  /* CTA button adjustments */
+  .cta {
+    padding: 14px 20px;
+    font-size: 16px;
+    display: block;
+    text-align: center;
+    max-width: 240px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Footer adjustments */
+  .footer {
+    padding: 40px 20px 56px;
+  }
+
+  .footer-logo {
+    height: 28px;
+  }
+
+  .small {
+    font-size: 13px;
+  }
+
+  /* Code snippet readability */
+  .code {
+    font-size: 13px;
+    padding: 3px 7px;
   }
 }
