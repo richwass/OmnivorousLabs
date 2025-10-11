@@ -370,6 +370,30 @@ hr {
   }
 }
 
+/* Mobile phones (600px and below) - Stack nav vertically */
+@media (max-width: 600px) {
+  .nav {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 20px;
+  }
+
+  .nav-logo img {
+    height: 32px;
+  }
+
+  .nav-links {
+    gap: 20px;
+    font-size: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-links a {
+    padding: 4px 0;
+  }
+}
+
 /* Mobile phones (480px and below) */
 @media (max-width: 480px) {
   /* Increase horizontal padding on small screens */
@@ -378,18 +402,13 @@ hr {
   }
 
   .nav {
-    padding: 12px 20px;
+    padding: 14px 20px;
   }
 
-  /* Make nav links more touch-friendly */
+  /* Tighter nav links on very small screens */
   .nav-links {
     gap: 16px;
     font-size: 13px;
-  }
-
-  .nav-links a {
-    padding: 8px 4px;
-    display: inline-block;
   }
 
   /* Typography adjustments for readability */
