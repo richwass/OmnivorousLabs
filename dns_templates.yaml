@@ -1,0 +1,57 @@
+# DNS Templates (start simple; customize per provider)
+#
+# RECOMMENDED: Put your domain behind Cloudflare for easy DNS + SSL (free plan).
+
+primary_domain: omnivorouslabs.com
+apex_records:
+  # If using Netlify (static hosting):
+  - type: ALIAS
+    host: "@"
+    value: your-site.netlify.app
+    note: "Or use Netlify's 'Netlify DNS' which will auto-provision records."
+  # If using Vercel instead:
+  - type: A
+    host: "@"
+    value: 76.76.21.21
+    note: "Vercel apex redirect. Vercel will guide you in dashboard."
+
+www_records:
+  - type: CNAME
+    host: "www"
+    value: your-site.netlify.app
+    note: "Or Vercel-provided cname, e.g. cname.vercel-dns.com"
+
+# EMAIL — Pick ONE provider below and use their exact values.
+email_providers:
+  google_workspace:
+    mx:
+      - { host: "@", priority: 1,  value: "ASPMX.L.GOOGLE.COM." }
+      - { host: "@", priority: 5,  value: "ALT1.ASPMX.L.GOOGLE.COM." }
+      - { host: "@", priority: 5,  value: "ALT2.ASPMX.L.GOOGLE.COM." }
+      - { host: "@", priority: 10, value: "ALT3.ASPMX.L.GOOGLE.COM." }
+      - { host: "@", priority: 10, value: "ALT4.ASPMX.L.GOOGLE.COM." }
+    spf: 'v=spf1 include:_spf.google.com ~all'
+    dkim_note: "Create a DKIM selector in Google Admin (e.g. google) and add TXT: google._domainkey -> provided value"
+  zoho_mail:
+    mx:
+      - { host: "@", priority: 10, value: "mx.zoho.com." }
+      - { host: "@", priority: 20, value: "mx2.zoho.com." }
+      - { host: "@", priority: 50, value: "mx3.zoho.com." }
+    spf: 'v=spf1 include:zoho.com ~all'
+    dkim_note: "Zoho will provide selector & TXT value (e.g. zselector._domainkey)"
+  fastmail:
+    mx:
+      - { host: "@", priority: 10, value: "in1-smtp.messagingengine.com." }
+      - { host: "@", priority: 20, value: "in2-smtp.messagingengine.com." }
+    spf: 'v=spf1 include:spf.messagingengine.com ~all'
+    dkim_note: "Fastmail will provide selector (fm1, fm2) and TXT values"
+
+# DMARC — start with p=none to monitor; tighten later.
+dmarc:
+  host: "_dmarc"
+  type: "TXT"
+  value: "v=DMARC1; p=none; rua=mailto:dmarc-agg@omnivorouslabs.com; ruf=mailto:dmarc-forensic@omnivorouslabs.com; fo=1; adkim=s; aspf=s; pct=100"
+
+# OPTIONAL: Catch-all forward (if using Cloudflare Email Routing)
+cloudflare_email_routing:
+  - route: "catch-all -> rich@omnivorouslabs.com"

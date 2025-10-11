@@ -1,0 +1,6 @@
+# Redirect HTTP to HTTPS
+http://omnivorouslabs.com/* https://omnivorouslabs.com/:splat 301!
+http://www.omnivorouslabs.com/* https://www.omnivorouslabs.com/:splat 301!
+
+# Redirect www to non-www (or vice versa - choose one)
+https://www.omnivorouslabs.com/* https://omnivorouslabs.com/:splat 301!

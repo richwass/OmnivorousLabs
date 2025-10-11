@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" width="320" height="120">
+  <defs>
+    <style>
+      .text { font-family: Inter, Arial, sans-serif; font-weight: 800; font-size: 32px; fill: #0B1E33; }
+    </style>
+  </defs>
+  <!-- Prism icon -->
+  <g transform="translate(10,20) scale(1.1)">
+    <polygon points="0,60 50,0 100,60" fill="none" stroke="#0B1E33" stroke-width="6" stroke-linejoin="round"/>
+    <!-- beam -->
+    <rect x="30" y="30" width="70" height="8" fill="#A8FF3B"/>
+  </g>
+  <!-- Wordmark -->
+  <text class="text" x="130" y="55">OMNIVOROUS</text>
+  <text class="text" x="130" y="95">LABS</text>
+</svg>
