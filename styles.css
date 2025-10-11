@@ -19,7 +19,7 @@
   --space-xl: 96px;
 
   /* Mobile-specific spacing overrides */
-  --mobile-padding: 28px;
+  --mobile-padding: 32px;
 
   /* Typography */
   --font-body: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
@@ -329,12 +329,12 @@ hr {
 @media (max-width: 768px) {
   /* Increase container padding for better whitespace */
   .container {
-    padding: var(--space-md) var(--mobile-padding);
+    padding: var(--space-md) var(--mobile-padding) !important;
   }
 
   /* Navigation improvements */
   .nav {
-    padding: 16px var(--mobile-padding);
+    padding: 16px var(--mobile-padding) !important;
   }
 
   .nav-links {
@@ -410,11 +410,23 @@ hr {
 @media (max-width: 480px) {
   /* Increase horizontal padding on small screens */
   .container {
-    padding: 20px var(--mobile-padding);
+    padding: 20px var(--mobile-padding) !important;
   }
 
   .nav {
-    padding: 14px var(--mobile-padding);
+    padding: 14px var(--mobile-padding) !important;
+  }
+
+  /* Ensure all sections have proper horizontal padding */
+  .section {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Ensure footer respects mobile padding */
+  .footer {
+    padding-left: var(--mobile-padding) !important;
+    padding-right: var(--mobile-padding) !important;
   }
 
   /* Tighter nav links on very small screens */
@@ -495,7 +507,7 @@ hr {
 
   /* Footer adjustments */
   .footer {
-    padding: 40px 20px 56px;
+    padding: 40px var(--mobile-padding) 56px;
   }
 
   .footer-logo {
