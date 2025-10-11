@@ -19,7 +19,7 @@
   --space-xl: 96px;
 
   /* Mobile-specific spacing overrides */
-  --mobile-padding: 24px;
+  --mobile-padding: 28px;
 
   /* Typography */
   --font-body: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
@@ -375,7 +375,13 @@ hr {
   .nav {
     flex-direction: column;
     gap: 16px;
-    padding: 16px 20px;
+    padding: 16px var(--mobile-padding);
+    align-items: center;
+  }
+
+  .nav-logo {
+    width: 100%;
+    text-align: center;
   }
 
   .nav-logo img {
@@ -383,14 +389,20 @@ hr {
   }
 
   .nav-links {
-    gap: 20px;
+    width: 100%;
+    gap: 12px 20px;
     font-size: 14px;
     flex-wrap: wrap;
     justify-content: center;
   }
 
+  .nav-links li {
+    flex-shrink: 0;
+  }
+
   .nav-links a {
     padding: 4px 0;
+    white-space: nowrap;
   }
 }
 
@@ -398,11 +410,11 @@ hr {
 @media (max-width: 480px) {
   /* Increase horizontal padding on small screens */
   .container {
-    padding: 20px 20px;
+    padding: 20px var(--mobile-padding);
   }
 
   .nav {
-    padding: 14px 20px;
+    padding: 14px var(--mobile-padding);
   }
 
   /* Tighter nav links on very small screens */
